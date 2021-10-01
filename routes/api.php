@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,19 +16,18 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-//Route::middleware('auth:sanctum')->post('/user', function (Request $request) {
-//    return $request->user();
-//
-//});
-
 
 
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
 ], function ($router) {
+    Route::post('send_auth_code', [AuthController::class, 'sendAuthCode']);
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout']);
 
 });
+
+Route::post('basic_info', [UserController::class, 'basicInfo']);
+
 
