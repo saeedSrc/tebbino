@@ -17,6 +17,8 @@ class Kavenegar
        Curl_setopt($ch, CURLOPT_URL, "https://api.kavenegar.com/v1/" . $apiKey . "/verify/lookup.json?receptor=$receptor&token=$message&template=$template");
        $res = Curl_exec($ch);
        Curl_close($ch);
+       var_dump($res);
+       var_dump(json_decode($res));
        return json_decode($res)->return->status;
    }
 
