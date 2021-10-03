@@ -85,10 +85,10 @@ class AuthController extends Controller
             'message' => "کد فرستاده شد.",
             'message_en' => "code sent",
         ];
-        $kavenegar = new Kavenegar();
-        $res = $kavenegar->sendSms($phone, $code, "verify");
-        if (!$sentCode) {
 
+        if (!$sentCode) {
+            $kavenegar = new Kavenegar();
+            $res = $kavenegar->sendSms($phone, $code, "verify");
             if ($res == 200) {
                 session([$phone => $code]);
             } else {
