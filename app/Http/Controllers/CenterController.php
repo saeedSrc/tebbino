@@ -21,6 +21,24 @@ class CenterController extends Controller
     }
 
 
+    public function All()
+    {
+        $center_overview = Center::with('images', 'addresses')->get();
+        return $this->successResponse('centers', $center_overview);
+    }
+
+    public function Get($id)
+    {
+        $center =  Center::with('images', 'addresses', 'phones')->find($id);
+        try {
+            return $this->successResponse('center', $center);
+        } catch (\Throwable $e) {
+            return $this->errorResponse($e);
+        }
+
+    }
+
+
 }
 
 
