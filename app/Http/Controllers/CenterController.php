@@ -9,6 +9,11 @@ use Nette\Schema\Schema;
 
 class CenterController extends Controller
 {
+    public function __construct()
+    {
+//        $this->middleware('auth:api');
+    }
+
     public function OverView()
     {
         $center_overview = Center::select('id', 'name')->with('images', 'addresses')->get();

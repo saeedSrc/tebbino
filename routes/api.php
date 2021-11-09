@@ -35,6 +35,7 @@ Route::post('basic_info', [UserController::class, 'basicInfo']);
 
 // centers
 Route::group([
+    'middleware' => 'api',
     'prefix' => 'centers'
 ], function ($router) {
     Route::get('overview', [CenterController::class, 'OverView']);
@@ -45,6 +46,7 @@ Route::group([
 
 // doctors
 Route::group([
+    'middleware' => 'api',
     'prefix' => 'doctors'
 ], function ($router) {
     Route::get('overview', [DoctorController::class, 'OverView']);
