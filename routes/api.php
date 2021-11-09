@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CenterController;
+use App\Http\Controllers\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +33,20 @@ Route::group([
 Route::post('basic_info', [UserController::class, 'basicInfo']);
 
 
+// centers
+Route::group([
+    'prefix' => 'centers'
+], function ($router) {
+    Route::get('overview', [CenterController::class, 'OverView']);
+
+});
+
+
+
+// doctors
+Route::group([
+    'prefix' => 'doctors'
+], function ($router) {
+    Route::get('overview', [DoctorController::class, 'OverView']);
+
+});

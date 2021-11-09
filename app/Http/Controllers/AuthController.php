@@ -107,6 +107,6 @@ class AuthController extends Controller
 
 
         }
-        return $this->successResponse($data);
+        return $this->successResponse("data",$data);
     }
 }

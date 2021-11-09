@@ -28,12 +28,12 @@ class Controller extends BaseController
     }
 
 
-    public  function successResponse($data)
+    public  function successResponse($field, $data)
     {
         return response()
             ->json([
                 'success' => true,
-                'data'      =>  $data,
+                $field =>   $data,
             ]);
     }
 

@@ -23,7 +23,7 @@ class UserController extends Controller
             return $this->errorResponse($e);
         }
 
-        return  $this->successResponse($user);
+        return  $this->successResponse("basicInfo", $user);
 
     }
 }
