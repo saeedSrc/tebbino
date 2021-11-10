@@ -24,4 +24,21 @@ class Center extends Model
     {
         return $this->hasMany(Address::class, 'center_id');
     }
+
+    public function hoursOfWorks()
+    {
+        return $this->belongsTo(HoursOfWork::class, 'hours_of_work_id');
+    }
+
+    public function specialTests()
+    {
+        return $this->belongsToMany(SpecialTest::class, 'center_special_test')->withPivot('id');
+    }
+
+    public function doctors()
+    {
+        return $this->belongsToMany(Doctor::class, 'center_doctor')->withPivot('id');
+    }
+
+
 }
