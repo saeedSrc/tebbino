@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CenterController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\LocalInformation;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,10 @@ use App\Http\Controllers\DoctorController;
 |
 */
 
+Route::get('/provinces', [LocalInformation::class, 'getProvinces']);
+
+// url parameters: province(int)
+Route::get('/cities/{province_id}', [LocalInformation::class, 'getCities']);
 
 
 Route::group([
@@ -56,3 +62,7 @@ Route::group([
     Route::get('{id}', [DoctorController::class, 'Get']);
 
 });
+
+
+// search
+Route::get('search', [SearchController::class, 'search']);
