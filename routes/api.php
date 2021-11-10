@@ -65,4 +65,4 @@ Route::group([
 
 
 // search
-Route::get('search', [SearchController::class, 'search']);
+Route::post('search', [SearchController::class, 'search']);
