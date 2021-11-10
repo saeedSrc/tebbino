@@ -23,4 +23,16 @@ class Doctor extends Model
     {
         return $this->hasMany(Address::class, 'doctor_id');
     }
+
+
+    public function specialties()
+    {
+        return $this->belongsToMany(Specialty::class);
+    }
+
+    public function centers()
+    {
+        return $this->belongsToMany(Center::class, 'center_doctor')->withPivot('id');
+    }
+
 }

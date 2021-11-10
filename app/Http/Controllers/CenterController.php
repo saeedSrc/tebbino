@@ -29,7 +29,7 @@ class CenterController extends Controller
 
     public function Get($id)
     {
-        $center =  Center::with('images', 'addresses', 'phones', 'hoursOfWorks', 'specialTests', 'doctors')->find($id);
+        $center =  Center::with('images', 'addresses', 'phones', 'hoursOfWorks', 'specialTests', 'doctors', 'insuranceCompanies')->find($id);
         try {
             return $this->successResponse('center', $center);
         } catch (\Throwable $e) {

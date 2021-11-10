@@ -40,5 +40,10 @@ class Center extends Model
         return $this->belongsToMany(Doctor::class, 'center_doctor')->withPivot('id');
     }
 
+    public function insuranceCompanies()
+    {
+        return $this->belongsToMany(InsuranceCompany::class, 'center_insurance_company')->withPivot('id');
+    }
+
 
 }

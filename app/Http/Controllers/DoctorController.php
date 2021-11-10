@@ -29,7 +29,7 @@ class DoctorController extends Controller
 
     public function Get($id)
     {
-        $doctor =  Doctor::with('images', 'addresses', 'phones')->find($id);
+        $doctor =  Doctor::with('images', 'addresses', 'phones', 'specialties', 'centers')->find($id);
         try {
             return $this->successResponse('doctor', $doctor);
         } catch (\Throwable $e) {
