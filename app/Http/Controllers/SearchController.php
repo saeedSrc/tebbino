@@ -13,6 +13,7 @@ class SearchController extends Controller
     {
         $doctors = [];
         $center_ids = [];
+        $doctor_ids = [];
         $type = $request->type;
         $specialties = $request->specialties;
         $name = $request->name;
@@ -20,20 +21,16 @@ class SearchController extends Controller
         $city_id = $request->city_id;
         if($type == 'centres') {
 
-        }
-
-        if($type == 'doctors') {
+        } else if($type == 'doctors') {
             foreach ($specialties as $specialty) {
-                $specialty_id = Specialty::select('id')->where('name', '=', $specialty)->get();
-                $doctor_ids_temp = DoctorSpecialty::select('doctor_id')->where('specialty_id', '=', $specialty_id[0])->get();
-
-                foreach ($doctor_ids_temp as $doctor_id_temp) {
-                  $doctors[] =  Doctor::find($doctor_id_temp);
+                $specialty_ids = Specialty::where('name', '=', $specialty)->select('id')->get();
+                foreach ($specialty_ids as $specialty_id) {
+                    $doctor_ids_temp = DoctorSpecialty::select('doctor_id')->where('specialty_id', '=', $specialty_id->id)->get();
+                    $doctor_ids = array_push($doctor_ids, $doctor_ids_temp);
                 }
-             return $this->successResponse('result', $doctor_ids_temp);
             }
 
-        }else {
+        } else {
 
         }
     }
