@@ -37,6 +37,7 @@ Route::group([
 });
 
 Route::post('basic_info', [UserController::class, 'basicInfo']);
+Route::get('user', [UserController::class, 'get']);
 
 
 // centers

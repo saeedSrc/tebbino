@@ -26,4 +26,10 @@ class UserController extends Controller
         return  $this->successResponse("basicInfo", $user);
 
     }
+
+    public function get()
+    {
+        $user = Auth::user();
+        return $this->successResponse("user", $user);
+    }
 }
