@@ -48,6 +48,7 @@ Route::group([
     Route::get('overview', [CenterController::class, 'OverView']);
     Route::get('all', [CenterController::class, 'All']);
     Route::get('{id}', [CenterController::class, 'Get']);
+    Route::post('comment/{center_id}', [CenterController::class, 'comment']);
 
 });
 
@@ -61,6 +62,7 @@ Route::group([
     Route::get('overview', [DoctorController::class, 'OverView']);
     Route::get('all', [DoctorController::class, 'All']);
     Route::get('{id}', [DoctorController::class, 'Get']);
+    Route::post('comment/{doctor_id}', [DoctorController::class, 'comment']);
 
 });
 

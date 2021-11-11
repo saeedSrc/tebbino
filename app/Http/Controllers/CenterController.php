@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
 use App\Models\Center;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Nette\Schema\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class CenterController extends Controller
 {
@@ -35,6 +38,34 @@ class CenterController extends Controller
         } catch (\Throwable $e) {
             return $this->errorResponse($e);
         }
+
+    }
+
+
+    public function comment($center_id, CommentRequest $request)
+    {
+
+        $user = Auth::user();
+        $text = $request->text;
+        $rate = $request->rate;
+        $comment = new Comment();
+        $comment->user_id = $user->id;
+        $comment->center_id = $center_id;
+        $comment->text = $text;
+        $comment->save();
+        if ($rate) {
+            if ($rate >= 0 && $rate <= 5) {
+                $center = Center::find($center_id);
+               $old_satisfaction = $center->satisfaction;
+               $old_satisfaction_num = $center->satisfaction_num;
+               $new_satisfaction_num = $old_satisfaction_num +1;
+               $new_satisfaction = floatval(($old_satisfaction + $rate) /$new_satisfaction_num);
+                Center::whereId($center_id)->update(['satisfaction' => $new_satisfaction, 'satisfaction_num' => $new_satisfaction_num]);
+            }
+        }
+
+
+
 
     }
 
