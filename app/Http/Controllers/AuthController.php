@@ -33,7 +33,10 @@ class AuthController extends Controller
         if (!$user) {
             $user = new User();
             $user->phone_number = $phone;
+            $user->unique_code = 0;
             $user->save();
+            User::where('id', '=', $user->id)->update(["unique_code"=> $user->id * 10]);
+
         } else {
             if ($user->first_name) {
                 $already_registered = true;
