@@ -9,6 +9,7 @@ class LocalInformation extends Controller
 {
     public function getProvinces(Request $request)
     {
+        var_dump("LOSSSSSSSSSSSSSSSSSSSSS");
         $provinces =  Province::all();
 
         foreach ($provinces as $province) {
