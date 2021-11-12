@@ -63,10 +63,6 @@ class CenterController extends Controller
                 Center::whereId($center_id)->update(['satisfaction' => $new_satisfaction, 'satisfaction_num' => $new_satisfaction_num]);
             }
         }
-
-
-
-
     }
 
 
