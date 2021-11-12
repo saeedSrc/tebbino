@@ -63,6 +63,7 @@ Route::group([
     Route::get('overview', [DoctorController::class, 'OverView']);
     Route::get('all', [DoctorController::class, 'All']);
     Route::get('{id}', [DoctorController::class, 'Get']);
+    Route::get('comments/{doctor_id}', [DoctorController::class, 'GetAllComments']);
     Route::post('comment/{doctor_id}', [DoctorController::class, 'comment']);
 
 });

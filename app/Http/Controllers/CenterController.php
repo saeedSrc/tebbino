@@ -66,11 +66,13 @@ class CenterController extends Controller
                 Center::whereId($center_id)->update(['satisfaction' => $new_satisfaction, 'satisfaction_num' => $new_satisfaction_num]);
             }
         }
+        $comment->user = $user;
+        return $this->successResponse('comment', $comment);
     }
 
     public function GetAllComments($center_id)
     {
-        $comments = Comment::where('center_id', '=', $center_id)->with('user', 'center:satisfaction')->get();
+        $comments = Comment::where('center_id', '=', $center_id)->with('user')->get();
         return $this->successResponse('comments', $comments);
     }
 }

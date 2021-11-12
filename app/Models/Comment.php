@@ -22,9 +22,5 @@ class Comment extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function center()
-    {
-        return $this->belongsTo(Center::class, 'center_id');
-    }
 
 }

@@ -65,5 +65,14 @@ class DoctorController extends Controller
                 Doctor::whereId($doctor_id)->update(['satisfaction' => $new_satisfaction, 'satisfaction_num' => $new_satisfaction_num]);
             }
         }
+
+        $comment->user = $user;
+        return $this->successResponse('comment', $comment);
+    }
+
+    public function GetAllComments($doctor_id)
+    {
+        $comments = Comment::where('doctor_id', '=', $doctor_id)->with('user')->get();
+        return $this->successResponse('comments', $comments);
     }
 }
