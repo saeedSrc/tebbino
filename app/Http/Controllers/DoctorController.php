@@ -51,6 +51,9 @@ class DoctorController extends Controller
         $comment->user_id = $user->id;
         $comment->doctor_id = $doctor_id;
         $comment->text = $text;
+        if ($rate) {
+            $comment->rate = $rate;
+        }
         $comment->save();
         if ($rate) {
             if ($rate >= 0 && $rate <= 5) {

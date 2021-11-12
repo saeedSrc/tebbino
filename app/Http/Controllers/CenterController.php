@@ -52,6 +52,9 @@ class CenterController extends Controller
         $comment->user_id = $user->id;
         $comment->center_id = $center_id;
         $comment->text = $text;
+        if ($rate) {
+            $comment->rate = $rate;
+        }
         $comment->save();
         if ($rate) {
             if ($rate >= 0 && $rate <= 5) {
@@ -65,7 +68,11 @@ class CenterController extends Controller
         }
     }
 
-
+    public function GetAllComments($center_id)
+    {
+        $comments = Comment::where('center_id', '=', $center_id)->with('user', 'center:satisfaction')->get();
+        return $this->successResponse('comments', $comments);
+    }
 }
 
 

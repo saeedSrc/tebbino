@@ -11,8 +11,20 @@ class Comment extends Model
 
     protected $fillable = [
         'text',
+        'rate',
         'user_id',
         'center_id',
         'doctor_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function center()
+    {
+        return $this->belongsTo(Center::class, 'center_id');
+    }
+
 }
