@@ -11,6 +11,9 @@ class LocalInformation extends Controller
     {
         $provinces =  Province::all();
 
+        foreach ($provinces as $province) {
+            var_dump($province->name);
+        }
         return $this->successResponse('provinces', $provinces);
     }
 
