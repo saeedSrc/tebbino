@@ -9,14 +9,9 @@ class LocalInformation extends Controller
 {
     public function getProvinces(Request $request)
     {
-        return "kose masd";
-//        var_dump("LOSSSSSSSSSSSSSSSSSSSSS");
-//        $provinces =  Province::all();
-//
-//        foreach ($provinces as $province) {
-//            var_dump($province->name);
-//        }
-//        return $this->successResponse('provinces', $provinces);
+        $provinces =  Province::all();
+
+        return $this->successResponse('provinces', $provinces);
     }
 
     public function getCities($provinceId)
