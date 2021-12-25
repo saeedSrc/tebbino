@@ -7,6 +7,8 @@
  */
 
 return [
-    'images_base_path' => 'http://185.81.96.196:9000/app/public/uploads/doctor_images/',
+    'doctor_images_base_path' => 'http://185.81.96.196:9000/app/public/uploads/doctor_images/',
+    'center_images_base_path' => 'http://185.81.96.196:9000/app/public/uploads/center_images/',
+    'center_logo_base_path' => 'http://185.81.96.196:9000/app/public/uploads/center_logo/',
 ];
 
