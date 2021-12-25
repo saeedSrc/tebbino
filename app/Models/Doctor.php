@@ -9,6 +9,13 @@ class Doctor extends Model
 {
     use HasFactory;
     protected $connection = 'mysql2';
+
+    protected $appends = array('image_base_path');
+
+    public function getImageBasePathAttribute()
+    {
+        return config('constants.doctor_images_base_path');
+    }
     public function images()
     {
         return $this->hasMany(Image::class, 'doctor_id');
