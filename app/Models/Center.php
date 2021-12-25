@@ -10,19 +10,17 @@ class Center extends Model
     use HasFactory;
     protected $connection = 'mysql2';
 
-//    public $imagePath = config('constants.center_images_base_path');
-//    public $logoBasePath = config('constants.center_logo_base_path');
-
-
-
-
-    protected $appends = array('image_base_path');
+    protected $appends = array('image_base_path', 'logo_base_path');
 
     public function getImageBasePathAttribute()
     {
         return config('constants.center_images_base_path');
     }
 
+    public function getLogoBasePathAttribute()
+    {
+        return config('constants.center_logo_base_path');
+    }
     public function images()
     {
         return $this->hasMany(Image::class, 'center_id');
