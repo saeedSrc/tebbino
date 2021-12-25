@@ -27,6 +27,7 @@ class DoctorController extends Controller
     {
 
         $doctor_overview = Doctor::with('images', 'addresses')->get();
+        $doctor_overview["images_base_path"] = config('constants.images_base_path');
         return $this->successResponse('doctors', $doctor_overview);
     }
 
