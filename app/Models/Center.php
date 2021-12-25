@@ -16,7 +16,7 @@ class Center extends Model
 
 
 
-    protected $appends = array('imageBasePath');
+    protected $appends = array('image_base_path');
 
     public function getImageBasePathAttribute()
     {
