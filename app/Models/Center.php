@@ -10,8 +10,8 @@ class Center extends Model
     use HasFactory;
     protected $connection = 'mysql2';
 
-    public $imagePath = config('constants.center_images_base_path');
-    public $logoBasePath = config('constants.center_logo_base_path');
+    public $imagePath = 222;
+    public $logoBasePath = 222;
 
     public function images()
     {
