@@ -26,7 +26,7 @@ class CenterController extends Controller
 
     public function All()
     {
-        $center_overview = Center::with('images', 'addresses', 'imagePath', 'logoBasePath')->get();
+        $center_overview = Center::with('images', 'addresses')->get();
         return $this->successResponse('centers', $center_overview);
     }
 
