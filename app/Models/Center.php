@@ -10,16 +10,16 @@ class Center extends Model
     use HasFactory;
     protected $connection = 'mysql2';
 
-//    public function imagePath()
-//    {
-//        return 2;
-//        return config('constants.center_images_base_path');
-//    }
-//    public function logoBasePath()
-//    {
-//        return 3;
-//        return config('constants.center_logo_base_path');
-//    }
+    public function imagePath()
+    {
+
+        return config('constants.center_images_base_path');
+    }
+    public function logoBasePath()
+    {
+
+        return config('constants.center_logo_base_path');
+    }
     public function images()
     {
         return $this->hasMany(Image::class, 'center_id');
