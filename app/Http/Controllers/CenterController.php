@@ -27,8 +27,8 @@ class CenterController extends Controller
     public function All()
     {
         $center_overview = Center::with('images', 'addresses')->get();
-        $center_overview["images_base_path"] = config('constants.center_images_base_path');
-        $center_overview["logo_base_path"] = config('constants.center_logo_base_path');
+//        $center_overview["images_base_path"] = config('constants.center_images_base_path');
+//        $center_overview["logo_base_path"] = config('constants.center_logo_base_path');
         return $this->successResponse('centers', $center_overview);
     }
 
