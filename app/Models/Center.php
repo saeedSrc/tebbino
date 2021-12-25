@@ -12,10 +12,12 @@ class Center extends Model
 
     public function imagePath()
     {
+        return 2;
         return config('constants.center_images_base_path');
     }
     public function logoBasePath()
     {
+        return 3;
         return config('constants.center_logo_base_path');
     }
     public function images()
